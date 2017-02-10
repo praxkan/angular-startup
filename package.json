@@ -4,13 +4,21 @@
   "description": "startup project",
   "main": "index.html",
   "scripts": {
-    "start": "nsp check",
+    "init-web-server": "babel-node build-scripts/demo-webserver.js",
+    "prestart": "nsp check",
+    "start": "npm-run-all init-web-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Prax",
   "license": "ISC",
   "devDependencies": {
+    "babel-cli": "^6.22.2",
+    "babel-preset-latest": "^6.22.0",
+    "chalk": "^1.1.3",
     "express": "^4.14.1",
-    "nsp": "^2.6.2"
+    "npm-run-all": "^4.0.1",
+    "nsp": "^2.6.2",
+    "open": "0.0.5",
+    "path": "^0.12.7"
   }
 }
