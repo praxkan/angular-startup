@@ -5,8 +5,9 @@
   "main": "index.html",
   "scripts": {
     "init-web-server": "babel-node build-scripts/demo-webserver.js",
-    "prestart": "nsp check",
-    "start": "npm-run-all init-web-server",
+    "security-check": "nsp check",
+    "prestart": "babel-node build-scripts/notify-app-start.js",
+    "start": "npm-run-all --parallel init-web-server security-check",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Prax",
