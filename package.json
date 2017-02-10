@@ -1,0 +1,16 @@
+{
+  "name": "angular-startup",
+  "version": "1.0.0",
+  "description": "startup project",
+  "main": "index.html",
+  "scripts": {
+    "start": "nsp check",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Prax",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.14.1",
+    "nsp": "^2.6.2"
+  }
+}
