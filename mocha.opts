@@ -1,0 +1,4 @@
+./src/**/*.test.js
+--require build-scripts/setup-tests
+--reporter progress
+--ui bdd

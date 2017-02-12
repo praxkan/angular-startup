@@ -1,28 +1,33 @@
 import path from 'path';
 import Webpack from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import md5Hash from 'webpack-md5-hash';
 
 export default  {
-  debug: true,
   devtool: 'source-map',
-  noInfo: false,
-  entry: [
-    path.resolve(__dirname, 'src/index')
-  ],
+  entry: {
+    app: path.resolve(__dirname, 'src/app/index')
+  },
   target: 'web',
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
-    filename: 'app.min.js'
+    filename: '[name].[chunkhash].min.js'
   },
   plugins:[
-    //Eliminate dupe packages
-    new Webpack.optimize.DedupePlugin(),
+    new md5Hash(),
+    //Create new index.template.html from template in app folder
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: 'src/app/index.template.html',
+      inject: true
+    }),
     //Minify
     new Webpack.optimize.UglifyJsPlugin()
   ],
   module: {
     loaders: [
-      {test: /\.js$/, exclude: /node_modules/, loaders:['babel']},
+      {test: /\.js$/, exclude: /node_modules/, loaders:['babel-loader']},
       {test: /\.css$/, loaders:['style', 'css']}
     ]
   }
